@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/assets/esri/themes/light/main.css" />
+    <title>Cheddar map</title>
+
+    <style>
+      :root {
+        --map-height: 90%;
+      }
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: var(--map-height);
+        width: 100%;
+      }
+      #menu {
+        padding: 0;
+        margin: 0;
+        height: calc(100% - var(--map-height));
+        width: 100%;
+        background-color: cadetblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="menu">
+      <label for="fileselect-csv">Choose CSV</label>
+      <input
+        id="fileselect-csv"
+        type="file"
+        multiple="true"
+        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+      />
+      <button id="dl-graphics">Download</button>
+    </div>
+    <div id="viewDiv"></div>
+  </body>
+</html>
