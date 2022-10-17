@@ -3,7 +3,7 @@ import { mapView } from "./mapView";
 import { registerDragAndDrop, registerFileSelection } from "./loadCSV";
 import { createMarker } from "./drawGraphic";
 import { layers } from "./layers";
-import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
+import { registerDownloadGraphicsAsCSV } from "./download/graphics";
 esriConfig.assetsPath = "./assets";
 esriConfig.request.useIdentity = false;
 esriConfig.apiKey = "ARCGIS_APIKEY";
@@ -21,7 +21,7 @@ if (!fileInput) throw new Error(`Cannot find: ${fileInputSelector}`);
 registerFileSelection(fileInput);
 
 mapView.on("double-click", (event) => {
-  event.stopPropagation()
+  event.stopPropagation();
   // @ts-ignore
   createMarker(layers[0], event.mapPoint);
 });
@@ -30,8 +30,4 @@ const downloadGraphicSelector = "#dl-graphics";
 const downloadGraphics = document.querySelector(downloadGraphicSelector);
 if (!downloadGraphics)
   throw new Error(`Cannot find: ${downloadGraphicSelector}`);
-downloadGraphics.addEventListener("click", (event) => {
-  // @ts-ignore
-  const graphics = (layers[0] as GraphicsLayer).graphics._items
-  console.log(graphics)
-})
+registerDownloadGraphicsAsCSV(downloadGraphics);
