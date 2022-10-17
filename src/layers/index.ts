@@ -1,7 +1,6 @@
 import { graphicsLayer } from "./graphics";
-import { csvLayerFromURL } from "./csv";
+export { csvLayerFromURL } from "./csv";
 
-const layers = [] as __esri.Layer[];
+export const layers = [] as __esri.Layer[];
 
 layers.push(graphicsLayer);
-export { layers, csvLayerFromURL };

@@ -1,3 +1,2 @@
-import { createMarker } from "./marker";
+export { createMarker } from "./marker";
 
-export { createMarker };
