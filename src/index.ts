@@ -22,8 +22,13 @@ registerFileSelection(fileInput);
 
 mapView.on("double-click", (event) => {
   event.stopPropagation();
-  // @ts-ignore
-  createMarker(layers[0], event.mapPoint);
+  const inputIsSetAttributes = document.querySelector(
+    "input[id='set-attributes']"
+  ) as HTMLInputElement;
+  const isSetAttributes = inputIsSetAttributes.checked;
+
+  // @ts-expect-error
+  createMarker(layers[0], event.mapPoint, { isSetAttributes: isSetAttributes });
 });
 
 const downloadGraphicSelector = "#dl-graphics";
