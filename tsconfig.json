@@ -8,6 +8,6 @@
     "moduleResolution": "Node",
     "jsx": "react-jsx"
   },
-  "files": ["src/index.ts"],
+  "files": ["src/index.tsx"],
   "exclude": ["node_modules"]
 }

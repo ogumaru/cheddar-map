@@ -4,10 +4,15 @@ import { registerDragAndDrop, registerFileSelection } from "./loadCSV";
 import { createMarker } from "./drawGraphic";
 import { layers } from "./layers";
 import { registerDownloadGraphicsAsCSV } from "./download/graphics";
+import { createRoot } from "react-dom/client";
+import { App } from "./App";
+
+const root = createRoot(document.body);
+root.render(<App />);
+
 esriConfig.assetsPath = "./assets";
 esriConfig.request.useIdentity = false;
 esriConfig.apiKey = "ARCGIS_APIKEY";
-
 console.log(mapView);
 
 const mapElementSelector = "#viewDiv";
