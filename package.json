@@ -12,6 +12,7 @@
     "copy": "mkdirp ./dist && ncp ./node_modules/@arcgis/core/assets ./dist/assets"
   },
   "devDependencies": {
+    "@types/react-dom": "^18.0.6",
     "html-webpack-plugin": "^5.5.0",
     "mkdirp": "^1.0.4",
     "ncp": "^2.0.0",
@@ -23,6 +24,8 @@
     "webpack-dev-server": "^4.9.2"
   },
   "dependencies": {
-    "@arcgis/core": "^4.23.7"
+    "@arcgis/core": "^4.23.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
