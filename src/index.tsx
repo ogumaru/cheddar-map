@@ -5,7 +5,7 @@ import { layers } from "./layers";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
 
-const root = createRoot(document.body);
+const root = createRoot(document.querySelector("div#app"));
 root.render(<App />);
 
 esriConfig.assetsPath = "./assets";
