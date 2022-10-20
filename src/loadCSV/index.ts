@@ -1,3 +1,2 @@
-import { registerDragAndDrop } from "./fromDrop";
-import { registerFileSelection } from "./fromInput";
-export { registerDragAndDrop, registerFileSelection };
+export { handleDragOver, handleDrop } from "./fromDrop";
+export { handleSelection } from "./fromInput";

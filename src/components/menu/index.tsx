@@ -1,3 +1,6 @@
+import { downloadGraphicsAsCSV } from "../../download/graphics";
+import { handleSelection } from "../../loadCSV";
+
 export const Menu = () => {
   return (
     <>
@@ -8,8 +11,11 @@ export const Menu = () => {
           type="file"
           multiple={true}
           accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+          onChange={handleSelection}
         />
-        <button id="dl-graphics">Download</button>
+        <button id="dl-graphics" onClick={() => downloadGraphicsAsCSV()}>
+          Download
+        </button>
         <label htmlFor="set-attributes">Set Attribute</label>
         <input id="set-attributes" type="checkbox" />
       </div>
