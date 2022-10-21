@@ -1,14 +1,33 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Menu } from "./components/menu";
 import { handleDragOver, handleDrop } from "./loadCSV";
-import { setupMapView } from "./mapView";
+import { mapView } from "./mapView";
+import { MenuContext } from "./contexts";
+import { createMarker } from "./drawGraphic";
+import { layers } from "./layers";
 
 export const App = () => {
-  useEffect(setupMapView, []);
+  const [isSetAttributes, setIsSetAttributes] = useState(false);
+
+  useEffect(() => {
+    mapView.set("container", "viewDiv");
+    mapView.on("double-click", (event) => {
+      event.stopPropagation();
+      // @ts-expect-error
+      createMarker(layers[0], event.mapPoint, {
+        isSetAttributes,
+      });
+    });
+  }, [isSetAttributes]);
   return (
     <>
-      <Menu></Menu>
-      <div onDragOver={handleDragOver} onDrop={handleDrop} id="viewDiv"></div>;
+      <MenuContext.Provider
+        value={{ isSetAttr: isSetAttributes, setIsSetAttr: setIsSetAttributes }}
+      >
+        <Menu />
+        <div onDragOver={handleDragOver} onDrop={handleDrop} id="viewDiv"></div>
+        ;
+      </MenuContext.Provider>
     </>
   );
 };
