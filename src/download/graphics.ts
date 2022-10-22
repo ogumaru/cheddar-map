@@ -20,25 +20,22 @@ const defaultOption: downloadOption = {
 
 // TODO: Shift_JIS対応
 // TextEncoderでは難しそうだった
-export const registerDownloadGraphicsAsCSV = (
-  downloadButton: Element,
+export const downloadGraphicsAsCSV = (
   option: downloadOption = defaultOption
 ): void => {
-  downloadButton.addEventListener("click", (_) => {
-    const header = ["名前", "緯度", "経度"].join(",");
-    // @ts-expect-error
-    const items = (layers[0] as GraphicsLayer).graphics.items as graphicItem[];
-    const content = items
-      .map((item) =>
-        [
-          item.attributes.name,
-          item.geometry.latitude,
-          item.geometry.longitude,
-        ].join(",")
-      )
-      .join(option.lineBreak);
-    // Ensure to ends with blank line.
-    const csvContent = [header, content, ""].join(option.lineBreak);
-    downloadAsCSV(csvContent);
-  });
+  const header = ["名前", "緯度", "経度"].join(",");
+  // @ts-expect-error
+  const items = (layers[0] as GraphicsLayer).graphics.items as graphicItem[];
+  const content = items
+    .map((item) =>
+      [
+        item.attributes.name,
+        item.geometry.latitude,
+        item.geometry.longitude,
+      ].join(",")
+    )
+    .join(option.lineBreak);
+  // Ensure to ends with blank line.
+  const csvContent = [header, content, ""].join(option.lineBreak);
+  downloadAsCSV(csvContent);
 };

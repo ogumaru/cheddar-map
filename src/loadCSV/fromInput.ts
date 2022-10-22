@@ -1,10 +1,12 @@
 import { loadCSV, isCSVFile } from "./handleCSV";
 
-const handleSelection = (event: InputEvent): void => {
+export const handleSelection = (
+  event: React.ChangeEvent<HTMLInputElement>
+): void => {
   event.stopPropagation();
   event.preventDefault();
 
-  const target = event.target as HTMLInputElement;
+  const target = event.target;
   if (!target.files) throw new Error("file");
 
   Array.from(target.files)
@@ -18,11 +20,4 @@ const handleSelection = (event: InputEvent): void => {
         }
       });
     });
-};
-
-export const registerFileSelection = (inputElement: Element): void => {
-  inputElement.addEventListener(
-    "change",
-    handleSelection as (e: Event) => void
-  );
 };

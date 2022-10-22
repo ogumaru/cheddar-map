@@ -11,5 +11,4 @@ export const mapView = new MapView({
   map: map,
   center: [139.80566054418858, 36.31244412415885],
   zoom: 16,
-  container: "viewDiv",
 });

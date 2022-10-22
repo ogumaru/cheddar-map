@@ -1,13 +1,13 @@
 import { loadCSV, isCSVItem } from "./handleCSV";
 
-const handleDragOver = (event: DragEvent): void => {
+export const handleDragOver = (event: React.DragEvent<HTMLElement>): void => {
   event.stopPropagation();
   event.preventDefault();
   if (!event.dataTransfer) return;
   event.dataTransfer.dropEffect = "copy";
 };
 
-const handleDrop = (event: DragEvent): void => {
+export const handleDrop = (event: React.DragEvent<HTMLElement>): void => {
   event.stopPropagation();
   event.preventDefault();
 
@@ -26,9 +26,4 @@ const handleDrop = (event: DragEvent): void => {
         }
       });
     });
-};
-
-export const registerDragAndDrop = (dropArea: Element): void => {
-  dropArea.addEventListener("dragover", handleDragOver as (e: Event) => void);
-  dropArea.addEventListener("drop", handleDrop as (e: Event) => void);
 };
