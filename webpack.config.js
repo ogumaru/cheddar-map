@@ -1,8 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
 const isProduction = process.env.NODE_ENV == "production";
-const Dotenv = require("dotenv-webpack");
 
 const config = {
   entry: "./src/index.tsx",
@@ -19,7 +19,9 @@ const config = {
     new HtmlWebpackPlugin({
       template: "index.html",
     }),
-    new Dotenv(),
+    new webpack.DefinePlugin({
+      "process.env.ARCGIS_APIKEY": JSON.stringify(process.env.ARCGIS_APIKEY),
+    }),
   ],
   module: {
     rules: [
