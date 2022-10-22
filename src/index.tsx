@@ -10,4 +10,4 @@ root.render(<App />);
 
 esriConfig.assetsPath = "./assets";
 esriConfig.request.useIdentity = false;
-esriConfig.apiKey = "ARCGIS_APIKEY";
+esriConfig.apiKey = process.env.ARCGIS_APIKEY as string;

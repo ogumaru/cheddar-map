@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV == "production";
+const Dotenv = require("dotenv-webpack");
 
 const config = {
   entry: "./src/index.tsx",
@@ -18,6 +19,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: "index.html",
     }),
+    new Dotenv(),
   ],
   module: {
     rules: [
