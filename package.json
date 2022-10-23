@@ -9,11 +9,14 @@
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "serve": "webpack serve",
-    "copy": "mkdirp ./dist && ncp ./node_modules/@arcgis/core/assets ./dist/assets"
+    "copy": "npm run copy:core && npm run copy:calcite",
+    "copy:core": "mkdirp dist/core && ncp node_modules/@arcgis/core/assets/ dist/core",
+    "copy:calcite": "mkdirp dist/calcite && ncp node_modules/@esri/calcite-components/dist/calcite/assets/ dist/calcite"
   },
   "devDependencies": {
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "css-loader": "^6.7.1",
     "eslint": "^8.26.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
     "eslint-plugin-import": "^2.26.0",
@@ -33,6 +36,7 @@
   },
   "dependencies": {
     "@arcgis/core": "^4.23.7",
+    "@esri/calcite-components-react": "^0.32.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
