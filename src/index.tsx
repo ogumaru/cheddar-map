@@ -10,7 +10,7 @@ if (!appRoot) throw new Error(`error: ${appRootSelector} not found`);
 const root = createRoot(appRoot);
 root.render(<App />);
 
-setAssetPath("/calcite");
+setAssetPath("/calcite/assets");
 esriConfig.assetsPath = "/core";
 esriConfig.request.useIdentity = false;
 esriConfig.apiKey = process.env.ARCGIS_APIKEY as string;

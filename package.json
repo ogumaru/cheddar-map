@@ -11,7 +11,7 @@
     "serve": "webpack serve",
     "copy": "npm run copy:core && npm run copy:calcite",
     "copy:core": "mkdirp dist/core && ncp node_modules/@arcgis/core/assets/ dist/core",
-    "copy:calcite": "mkdirp dist/calcite && ncp node_modules/@esri/calcite-components/dist/calcite/assets/ dist/calcite"
+    "copy:calcite": "mkdirp dist/calcite && ncp node_modules/@esri/calcite-components/dist/calcite/ dist/calcite"
   },
   "devDependencies": {
     "@types/react-dom": "^18.0.6",
