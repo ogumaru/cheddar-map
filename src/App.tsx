@@ -4,7 +4,7 @@ import { handleDragOver, handleDrop } from "./loadCSV";
 import { mapView } from "./mapView";
 import { MenuContext } from "./contexts";
 import { createMarker } from "./drawGraphic";
-import { layers } from "./layers";
+import { layerStore } from "./layers";
 
 export const App = () => {
   const [isSetAttributes, setIsSetAttributes] = useState(false);
@@ -14,7 +14,7 @@ export const App = () => {
     mapView.on("double-click", (event) => {
       event.stopPropagation();
       // @ts-expect-error
-      createMarker(layers[0], event.mapPoint, {
+      createMarker(layerStore.graphicsLayer, event.mapPoint, {
         isSetAttributes,
       });
     });

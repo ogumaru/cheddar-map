@@ -1,10 +1,10 @@
 import MapView from "@arcgis/core/views/MapView";
 import Map from "@arcgis/core/Map";
-import { layers } from "./layers";
+import { layerStore } from "./layers";
 
 export const map = new Map({
   basemap: "arcgis-topographic",
-  layers: layers,
+  layers: layerStore.layers,
 });
 
 export const mapView = new MapView({

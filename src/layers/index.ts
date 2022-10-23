@@ -1,7 +1,25 @@
 import { graphicsLabelLayer, graphicsLayer } from "./graphics";
+import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
 export { csvLayerFromURL } from "./csv";
 
-export const layers = [] as __esri.Layer[];
+export class LayerStore {
+  public graphicsLayer: GraphicsLayer;
+  public graphicsLabelLayer: GraphicsLayer;
 
-layers.push(graphicsLayer);
-layers.push(graphicsLabelLayer);
+  constructor(prop: {
+    graphicsLayer: GraphicsLayer;
+    graphicsLabelLayer: GraphicsLayer;
+  }) {
+    this.graphicsLayer = prop.graphicsLayer;
+    this.graphicsLabelLayer = prop.graphicsLabelLayer;
+  }
+
+  public get layers(): Array<__esri.Layer> {
+    return [this.graphicsLayer, this.graphicsLabelLayer];
+  }
+}
+
+export const layerStore = new LayerStore({
+  graphicsLayer,
+  graphicsLabelLayer,
+});

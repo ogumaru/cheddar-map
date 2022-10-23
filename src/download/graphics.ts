@@ -1,6 +1,5 @@
 import Graphic from "@arcgis/core/Graphic";
-import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
-import { layers } from "../layers";
+import { layerStore } from "../layers";
 import { downloadAsCSV } from "./handleBlob";
 
 type downloadOption = {
@@ -25,7 +24,7 @@ export const downloadGraphicsAsCSV = (
 ): void => {
   const header = ["名前", "緯度", "経度"].join(",");
   // @ts-expect-error
-  const items = (layers[0] as GraphicsLayer).graphics.items as graphicItem[];
+  const items = layerStore.graphicsLayer.graphics.items as graphicItem[];
   const content = items
     .map((item) =>
       [
