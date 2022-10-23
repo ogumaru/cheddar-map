@@ -2,6 +2,8 @@ import Graphic from "@arcgis/core/Graphic";
 import Point from "@arcgis/core/geometry/Point";
 import SpatialReference from "@arcgis/core/geometry/SpatialReference";
 import SimpleMarkerSymbol from "@arcgis/core/symbols/SimpleMarkerSymbol";
+import PopupTemplate from "@arcgis/core/PopupTemplate";
+import FieldInfo from "@arcgis/core/popup/FieldInfo";
 
 type option = {
   isSetAttributes: boolean;
@@ -32,14 +34,36 @@ export const createMarker = (
 
   // Canceled on prompt
   if (name === null) return;
+
+  const attributes = {
+    name: name,
+  };
+
   const pointGraphic = new Graphic({
     // @ts-ignore
     geometry: point,
     symbol: markerSymbol,
-    attributes: {
-      name: name,
-    },
+    attributes: attributes,
   });
+
+  // Show popup
+  if (option.isSetAttributes) {
+    const info = new PopupTemplate({
+      title: name,
+      content: [
+        {
+          type: "fields",
+          fieldInfos: [
+            new FieldInfo({
+              fieldName: "name",
+              label: "名前",
+            }),
+          ],
+        },
+      ],
+    });
+    pointGraphic.popupTemplate = info;
+  }
 
   graphics.add(pointGraphic);
 };
