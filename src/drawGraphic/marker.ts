@@ -4,6 +4,7 @@ import SpatialReference from "@arcgis/core/geometry/SpatialReference";
 import SimpleMarkerSymbol from "@arcgis/core/symbols/SimpleMarkerSymbol";
 import PopupTemplate from "@arcgis/core/PopupTemplate";
 import FieldInfo from "@arcgis/core/popup/FieldInfo";
+import { addLabelWithPoint } from "./label";
 
 type option = {
   isSetAttributes: boolean;
@@ -23,7 +24,9 @@ export const createMarker = (
     spatialReference: new SpatialReference({ wkid: 4326 }),
   });
 
+  const markerSize = 12;
   const markerSymbol = new SimpleMarkerSymbol({
+    size: markerSize,
     color: "#adff2f",
   });
 
@@ -46,8 +49,11 @@ export const createMarker = (
     attributes: attributes,
   });
 
-  // Show popup
   if (option.isSetAttributes) {
+    // Add Text Label if name is blank
+    if (name) addLabelWithPoint(point, name, { yoffset: markerSize });
+
+    // Show popup
     const info = new PopupTemplate({
       title: name,
       content: [
