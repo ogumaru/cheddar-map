@@ -17,7 +17,7 @@ export const Menu = () => {
         <CalciteIcon scale="m" slot="icon" icon="hamburger"></CalciteIcon>
         <div id="menu">
           <CalciteBlockSection text="インポート">
-            <label htmlFor="fileselect-csv">Choose CSV</label>
+            <label htmlFor="fileselect-csv">CSVファイル</label>
             <input
               id="fileselect-csv"
               type="file"
@@ -28,11 +28,11 @@ export const Menu = () => {
           </CalciteBlockSection>
           <CalciteBlockSection text="エクスポート">
             <button id="dl-graphics" onClick={() => downloadGraphicsAsCSV()}>
-              Download
+              CSVファイル
             </button>
           </CalciteBlockSection>
           <CalciteBlockSection text="設定">
-            <label htmlFor="set-attributes">Set Attribute</label>
+            <label htmlFor="set-attributes">ポイントへ属性情報を追加</label>
             <input
               id="set-attributes"
               type="checkbox"
