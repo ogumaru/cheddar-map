@@ -26,7 +26,6 @@ export const App = () => {
       >
         <Menu />
         <div onDragOver={handleDragOver} onDrop={handleDrop} id="viewDiv"></div>
-        ;
       </MenuContext.Provider>
     </>
   );
