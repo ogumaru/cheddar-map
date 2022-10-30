@@ -6,6 +6,8 @@ import { MenuContext } from "./contexts";
 import { createMarker } from "./drawGraphic";
 import { layerStore } from "./layers";
 
+const mapHeightPercent = 95;
+
 export const App = () => {
   const [isSetAttributes, setIsSetAttributes] = useState(false);
 
@@ -25,7 +27,17 @@ export const App = () => {
         value={{ isSetAttr: isSetAttributes, setIsSetAttr: setIsSetAttributes }}
       >
         <Menu />
-        <div onDragOver={handleDragOver} onDrop={handleDrop} id="viewDiv"></div>
+        <div
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          id="viewDiv"
+          style={{
+            padding: 0,
+            margin: 0,
+            height: `${mapHeightPercent}%`,
+            width: "100%",
+          }}
+        ></div>
       </MenuContext.Provider>
     </>
   );

@@ -10,17 +10,6 @@
     <title>Cheddar map</title>
 
     <style>
-      :root {
-        /*
-        ・CalciteBlock の高さ指定が不明。
-        style={ outerHeight: "10%", innerHeight: "10%" }
-        としても高さは固定になるので、ひとまず viewDiv の高さを直接変更して対応。
-        本来は下記のようにしたい。
-          viewDiv: var(--map-height)
-          CalciteBlock(メニュー): calc(100% - var(--map-height))
-        */
-        --map-height: 95%;
-      }
       html,
       body,
       div#app {
@@ -31,12 +20,6 @@
       }
       div#app {
         overflow: hidden;
-      }
-      #viewDiv {
-        padding: 0;
-        margin: 0;
-        height: var(--map-height);
-        width: 100%;
       }
     </style>
   </head>
