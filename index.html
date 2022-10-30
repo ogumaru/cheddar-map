@@ -5,13 +5,11 @@
       name="viewport"
       content="initial-scale=1, maximum-scale=1, user-scalable=no"
     />
-    <link rel="stylesheet" href="/assets/esri/themes/light/main.css" />
+    <link rel="stylesheet" href="/core/esri/themes/light/main.css" />
+    <script type="module" src="/calcite/calcite.esm.js"></script>
     <title>Cheddar map</title>
 
     <style>
-      :root {
-        --map-height: 90%;
-      }
       html,
       body,
       div#app {
@@ -20,18 +18,8 @@
         height: 100%;
         width: 100%;
       }
-      #viewDiv {
-        padding: 0;
-        margin: 0;
-        height: var(--map-height);
-        width: 100%;
-      }
-      #menu {
-        padding: 0;
-        margin: 0;
-        height: calc(100% - var(--map-height));
-        width: 100%;
-        background-color: cadetblue;
+      div#app {
+        overflow: hidden;
       }
     </style>
   </head>

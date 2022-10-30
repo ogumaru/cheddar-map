@@ -25,8 +25,17 @@ export const App = () => {
         value={{ isSetAttr: isSetAttributes, setIsSetAttr: setIsSetAttributes }}
       >
         <Menu />
-        <div onDragOver={handleDragOver} onDrop={handleDrop} id="viewDiv"></div>
-        ;
+        <div
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          id="viewDiv"
+          style={{
+            padding: 0,
+            margin: 0,
+            height: "100%",
+            width: "100%",
+          }}
+        ></div>
       </MenuContext.Provider>
     </>
   );
