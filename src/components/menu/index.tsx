@@ -16,7 +16,16 @@ export const Menu = () => {
   const marginEachComponents = "0.5em";
   return (
     <>
-      <CalciteBlock collapsible heading="メニュー" style={{ margin: 0 }}>
+      <CalciteBlock
+        collapsible
+        heading="メニュー"
+        style={{
+          margin: 0,
+          position: "absolute",
+          top: 0,
+          zIndex: 2,
+        }}
+      >
         <CalciteIcon scale="m" slot="icon" icon="hamburger"></CalciteIcon>
         <CalcitePanel id="menu">
           {/* CalciteInputがfileのmultipleをサポートしていないため素のinput */}

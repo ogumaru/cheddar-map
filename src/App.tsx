@@ -6,8 +6,6 @@ import { MenuContext } from "./contexts";
 import { createMarker } from "./drawGraphic";
 import { layerStore } from "./layers";
 
-const mapHeightPercent = 95;
-
 export const App = () => {
   const [isSetAttributes, setIsSetAttributes] = useState(false);
 
@@ -34,7 +32,7 @@ export const App = () => {
           style={{
             padding: 0,
             margin: 0,
-            height: `${mapHeightPercent}%`,
+            height: "100%",
             width: "100%",
           }}
         ></div>
