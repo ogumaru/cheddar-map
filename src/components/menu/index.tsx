@@ -9,6 +9,9 @@ import {
   CalciteLabel,
   CalciteButton,
   CalcitePanel,
+  CalciteDropdown,
+  CalciteDropdownGroup,
+  CalciteDropdownItem,
 } from "@esri/calcite-components-react";
 
 export const Menu = () => {
@@ -27,7 +30,7 @@ export const Menu = () => {
         }}
       >
         <CalciteIcon scale="m" slot="icon" icon="hamburger"></CalciteIcon>
-        <CalcitePanel id="menu">
+        <CalcitePanel id="menu" style={{ overflow: "visible" }}>
           {/* CalciteInputがfileのmultipleをサポートしていないため素のinput */}
           <div style={{ margin: marginEachComponents }}>
             <label htmlFor="fileselect-csv">CSVファイルのインポート</label>
@@ -46,6 +49,7 @@ export const Menu = () => {
           >
             CSVファイルのエクスポート
           </CalciteButton>
+
           <CalciteLabel
             layout="inline"
             style={{ margin: marginEachComponents }}
@@ -59,6 +63,22 @@ export const Menu = () => {
               }}
             />
           </CalciteLabel>
+          <CalciteDropdown>
+            <CalciteButton
+              slot="dropdown-trigger"
+              style={{ margin: marginEachComponents }}
+            >
+              CSVエクスポート設定
+            </CalciteButton>
+            <CalciteDropdownGroup
+              selection-mode="single"
+              group-title="文字エンコーディング"
+            >
+              <CalciteDropdownItem selected>UTF-8</CalciteDropdownItem>
+              <CalciteDropdownItem>EUC-JP</CalciteDropdownItem>
+              <CalciteDropdownItem>Shift_JIS</CalciteDropdownItem>
+            </CalciteDropdownGroup>
+          </CalciteDropdown>
         </CalcitePanel>
       </CalciteBlock>
     </>
