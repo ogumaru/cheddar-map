@@ -38,7 +38,8 @@
     "@arcgis/core": "^4.23.7",
     "@esri/calcite-components-react": "^0.32.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "wanco": "^0.1.1"
   },
   "engines": {
     "node": ">= 16",
