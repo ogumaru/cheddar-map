@@ -27,7 +27,7 @@ export const App = () => {
           setIsSetAttr: setIsSetAttributes,
           csvExportSetting: {
             encoding: "utf-8",
-            lineBreak: "\n"
+            lineBreak: "\n",
           },
           setCsvExportEncoding: (_) => {},
         }}

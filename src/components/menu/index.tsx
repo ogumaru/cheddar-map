@@ -46,7 +46,7 @@ export const Menu = () => {
           <CalciteButton
             style={{ margin: marginEachComponents }}
             id="dl-graphics"
-            onClick={() => downloadGraphicsAsCSV()}
+            onClick={() => downloadGraphicsAsCSV(context.csvExportSetting)}
           >
             CSVファイルのエクスポート
           </CalciteButton>
