@@ -5,11 +5,15 @@ type lineBreak_t = "\n" | "\r\n";
 export type csvEncodingSetting_t = {
   encoding: encoding_t;
 };
+export type downloadOption = {
+  encoding: encoding_t;
+  lineBreak: lineBreak_t;
+};
 
 type MenuContext = {
   isSetAttr: boolean;
   setIsSetAttr: (isSet: boolean) => void;
-  csvExportSetting: { encoding: encoding_t; lineBreak: lineBreak_t };
+  csvExportSetting: downloadOption;
   setCsvExportEncoding: (setting: csvEncodingSetting_t) => void;
 };
 

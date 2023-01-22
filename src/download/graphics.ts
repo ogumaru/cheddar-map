@@ -1,11 +1,7 @@
 import Graphic from "@arcgis/core/Graphic";
 import { layerStore } from "../layers";
 import { downloadAsCSV } from "./handleBlob";
-
-type downloadOption = {
-  encoding: "utf-8";
-  lineBreak: "\n" | "\r\n";
-};
+import { downloadOption } from "../contexts"
 
 // TODO: 型をしっかりつける
 type graphicItem = Graphic & {
