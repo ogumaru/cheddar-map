@@ -1,4 +1,4 @@
-export const downloadAsCSV = (content: string): void => {
+export const downloadAsCSV = (content: Uint8Array): void => {
   const blob = new Blob([content], { type: "text/csv" });
   const anchor = document.createElement("a");
   anchor.download = "points.csv";
