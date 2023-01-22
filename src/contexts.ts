@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-type encoding_t = "utf-8" | "euc-jp" | "shift_jis";
+export type encoding_t = "utf-8" | "euc-jp" | "shift_jis";
 type lineBreak_t = "\n" | "\r\n";
 export type csvEncodingSetting_t = {
   encoding: encoding_t;

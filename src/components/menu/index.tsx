@@ -13,6 +13,7 @@ import {
   CalciteDropdownGroup,
   CalciteDropdownItem,
 } from "@esri/calcite-components-react";
+import { supportedEncodings } from "../../download/settings";
 
 export const Menu = () => {
   const context = useContext(MenuContext);
@@ -82,21 +83,26 @@ export const Menu = () => {
               selection-mode="single"
               group-title="文字エンコーディング"
             >
-              {/* 
+              {
+                /* 
               TODO: 実装の検討 (2/2)
               CalciteDropdownItem に value に当たる属性が見つからず、選択時に textContent などから取得する方法しか浮かばなかった。
               型情報を保持するためにReactコンポーネントの属性情報として保持するため、
               defaultValueを利用するが、正しい利用方法か不明
-              */}
-              <CalciteDropdownItem defaultValue={"UTF-8"} selected>
-                UTF-8
-              </CalciteDropdownItem>
-              <CalciteDropdownItem defaultValue={"EUC-JP"}>
-                EUC-JP
-              </CalciteDropdownItem>
-              <CalciteDropdownItem defaultValue={"Shift_JIS"}>
-                Shift_JIS
-              </CalciteDropdownItem>
+              */
+                supportedEncodings.map((encoding) => {
+                  const selected = context.csvExportSetting.encoding === encoding.value
+                  return (
+                    <CalciteDropdownItem
+                      defaultValue={encoding.value}
+                      key={encoding.value}
+                      selected={ selected }
+                    >
+                      {encoding.displayName}
+                    </CalciteDropdownItem>
+                  );
+                })
+              }
             </CalciteDropdownGroup>
           </CalciteDropdown>
         </CalcitePanel>
