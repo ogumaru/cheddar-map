@@ -1,7 +1,7 @@
 import { downloadGraphicsAsCSV } from "../../download/graphics";
 import { handleSelection } from "../../loadCSV";
 import { useContext } from "react";
-import { MenuContext, csvEncodingSetting_t } from "../../contexts";
+import { MenuContext, encoding_t } from "../../contexts";
 import {
   CalciteBlock,
   CalciteIcon,
@@ -67,9 +67,8 @@ export const Menu = () => {
           <CalciteDropdown
             onCalciteDropdownSelect={(e) => {
               // TODO: 実装の検討 (1/2)
-              {/* @ts-ignore */}
               const encoding = e.target.selectedItems[0].attributes[0]
-                .nodeValue as csvEncodingSetting_t;
+                .nodeValue as encoding_t;
               context.setCsvExportEncoding(encoding);
             }}
           >
@@ -91,12 +90,13 @@ export const Menu = () => {
               defaultValueを利用するが、正しい利用方法か不明
               */
                 supportedEncodings.map((encoding) => {
-                  const selected = context.csvExportSetting.encoding === encoding.value
+                  const selected =
+                    context.csvExportSetting.encoding === encoding.value;
                   return (
                     <CalciteDropdownItem
                       defaultValue={encoding.value}
                       key={encoding.value}
-                      selected={ selected }
+                      selected={selected}
                     >
                       {encoding.displayName}
                     </CalciteDropdownItem>

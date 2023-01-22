@@ -5,9 +5,13 @@ import { mapView } from "./mapView";
 import { MenuContext } from "./contexts";
 import { createMarker } from "./drawGraphic";
 import { layerStore } from "./layers";
+import { encoding_t } from "./contexts";
 
 export const App = () => {
   const [isSetAttributes, setIsSetAttributes] = useState(false);
+  const [csvExportEncoding, setCsvExportEncoding] = useState(
+    "utf-8" as encoding_t
+  );
 
   useEffect(() => {
     mapView.set("container", "viewDiv");
@@ -26,10 +30,10 @@ export const App = () => {
           isSetAttr: isSetAttributes,
           setIsSetAttr: setIsSetAttributes,
           csvExportSetting: {
-            encoding: "utf-8",
+            encoding: csvExportEncoding,
             lineBreak: "\n",
           },
-          setCsvExportEncoding: (_) => {},
+          setCsvExportEncoding: setCsvExportEncoding,
         }}
       >
         <Menu />
