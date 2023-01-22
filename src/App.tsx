@@ -22,7 +22,15 @@ export const App = () => {
   return (
     <>
       <MenuContext.Provider
-        value={{ isSetAttr: isSetAttributes, setIsSetAttr: setIsSetAttributes }}
+        value={{
+          isSetAttr: isSetAttributes,
+          setIsSetAttr: setIsSetAttributes,
+          csvExportSetting: {
+            encoding: "utf-8",
+            lineBreak: "\n"
+          },
+          setCsvExportEncoding: (_) => {},
+        }}
       >
         <Menu />
         <div

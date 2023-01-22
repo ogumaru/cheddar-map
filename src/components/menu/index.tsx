@@ -1,7 +1,7 @@
 import { downloadGraphicsAsCSV } from "../../download/graphics";
 import { handleSelection } from "../../loadCSV";
 import { useContext } from "react";
-import { MenuContext } from "../../contexts";
+import { MenuContext, csvEncodingSetting_t } from "../../contexts";
 import {
   CalciteBlock,
   CalciteIcon,
@@ -63,7 +63,15 @@ export const Menu = () => {
               }}
             />
           </CalciteLabel>
-          <CalciteDropdown>
+          <CalciteDropdown
+            onCalciteDropdownSelect={(e) => {
+              // TODO: 実装の検討 (1/2)
+              {/* @ts-ignore */}
+              const encoding = e.target.selectedItems[0].attributes[0]
+                .nodeValue as csvEncodingSetting_t;
+              context.setCsvExportEncoding(encoding);
+            }}
+          >
             <CalciteButton
               slot="dropdown-trigger"
               style={{ margin: marginEachComponents }}
@@ -74,9 +82,21 @@ export const Menu = () => {
               selection-mode="single"
               group-title="文字エンコーディング"
             >
-              <CalciteDropdownItem selected>UTF-8</CalciteDropdownItem>
-              <CalciteDropdownItem>EUC-JP</CalciteDropdownItem>
-              <CalciteDropdownItem>Shift_JIS</CalciteDropdownItem>
+              {/* 
+              TODO: 実装の検討 (2/2)
+              CalciteDropdownItem に value に当たる属性が見つからず、選択時に textContent などから取得する方法しか浮かばなかった。
+              型情報を保持するためにReactコンポーネントの属性情報として保持するため、
+              defaultValueを利用するが、正しい利用方法か不明
+              */}
+              <CalciteDropdownItem defaultValue={"UTF-8"} selected>
+                UTF-8
+              </CalciteDropdownItem>
+              <CalciteDropdownItem defaultValue={"EUC-JP"}>
+                EUC-JP
+              </CalciteDropdownItem>
+              <CalciteDropdownItem defaultValue={"Shift_JIS"}>
+                Shift_JIS
+              </CalciteDropdownItem>
             </CalciteDropdownGroup>
           </CalciteDropdown>
         </CalcitePanel>
